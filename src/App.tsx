@@ -1,5 +1,5 @@
 import { useState } from 'react'
-//import Button from '@mui/material/Button'
+import Button from '@mui/material/Button'
 
 const App = () => {
   const [count, setCount] = useState(0)
@@ -62,25 +62,20 @@ const App = () => {
               />
             </label>
           </div>
+<Button variant="outlined" type="submit">Primary</Button>
         </form>
-{/* <Button variant="outlined">Primary</Button>
-<Button variant="outlined" disabled>
-  Disabled
-</Button>
-<Button variant="outlined" href="#outlined-buttons">
-  Link
-</Button>       */}
+   
 </div>
 
       <h2>Your Courses</h2>
-      <form>
+      <div>
         <div>
           <label htmlFor="courseName">
             Course Name:
             <output>{courseName}</output>
           </label>
         </div>
-      </form>
+      </div>
       <ul>
         {yourCourses.map((course, index) => (
           <li key={index}>{course}</li>
