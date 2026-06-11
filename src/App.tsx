@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Button from '@mui/material/Button'
+import './App.css'
 type Course = {
   courseName: string
   day: string
@@ -19,15 +20,15 @@ const App = () => {
   const handleInputChange = (event) => {
     setInputText(event.target.value);
   };
+  const handleClear = () => {
+    setYourCourses([]);
+    setOutputText('');
+  };
   // const handleButtonClick = () => {
   //   setOutputText(inputText);
   // };
   const handleAddCourse = (e: React.SubmitEvent<HTMLFormElement>) => { 
     e.preventDefault();
-    console.log('Course Name:', courseName);
-    console.log('Day:', day);
-    console.log('Start Time:', startTime);
-    console.log('End Time:', endTime);
     const newCourse: Course = {
       courseName,
       day,
@@ -40,11 +41,10 @@ const App = () => {
 
   return (
     <>
-      <h1>College Schedule</h1>
-      <p>Count: {count}</p>
+      <h1>College Scheduler</h1>
       <div>
         <h2>Add a course</h2>
-        <form onSubmit={handleAddCourse}>
+        <form className="courseForm" id="courseForm" onSubmit={handleAddCourse}>
           <div>
             <label htmlFor="courseName">
               Course Name:
@@ -53,7 +53,7 @@ const App = () => {
                 id="courseName"
                 value={courseName}
                 onChange={(e) => setCourseName(e.target.value)}
-                placeholder="Enter course name"
+                placeholder=".Eg: MAT 1475"
               />
             </label>
           </div>
@@ -157,11 +157,11 @@ const App = () => {
               </select>
             </label>
           </div>
-          <Button variant="contained" type="submit">
-            Add +
-          </Button>
         </form>
    
+          <Button variant="contained" form="courseForm" type="submit">
+            Add +
+          </Button>
 </div>
 
       <h2>Your Courses</h2>
@@ -176,6 +176,12 @@ const App = () => {
           </li>
         ))}
       </ul>
+      <p>
+
+      </p>
+      <Button variant="contained" onClick={handleClear}>
+        Clear
+      </Button>
     </>
   )
 }

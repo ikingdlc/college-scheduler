@@ -17,6 +17,11 @@
   }
 }
 
+.courseForm {
+  display: flex !important;
+  flex-direction: row;
+}
+
 .hero {
   position: relative;
 
@@ -182,3 +187,4 @@
     border-right-color: var(--border);
   }
 }
+
